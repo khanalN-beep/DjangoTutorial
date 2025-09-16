@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Portal - Login</title>
+    <link rel="stylesheet" href="{% static 'accounts/style1.css' %}">
+</head>
+<body>
+    <div class="background-shapes"></div>
+
+    <div class="container">
+        <div class="header">
+{#            <div class="vote-icon">📊</div>#}
+            <h3>Login to cast your vote</h3>
+            <h1>Secure Login</h1>
+        </div>
+
+        <form action="{% url 'accounts:login' %}" class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user">Email Address</label>
+                <div class="input-wrapper">
+                    <input type="text" id="email" name="username" placeholder="Enter your email address" required>
+                    <span class="input-icon">✉</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <span class="input-icon">🔒</span>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="remember">
+                    <span class="checkmark"></span>
+                    Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <span>Log In</span>
+                <span class="btn-arrow">→</span>
+            </button>
+
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+
+            <div class="social-buttons">
+                <button type="button" class="social-btn google">
+                    <span class="social-icon">G</span>
+                    Google
+                </button>
+                <button type="button" class="social-btn facebook">
+                    <span class="social-icon">f</span>
+                    Facebook
+                </button>
+            </div>
+
+            <div class="signup-text">
+                Don't have an account? <a href="#" class="signup-link">Sign up here</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,12 +1,27 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>The title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style1.css' %}">
 </head>
 <body>
-<ul>{% for question in latest_question_list %}
-    <li><a href="/polls/{{ question.id }}/result">{{ question.question_text }}</a></li>
-{% endfor %}</ul>
+    <header class="site-header">
+        <h1>Polls</h1>
+        <h1> <a href="{% url 'accounts:logout' %}">Log-Out</a></h1>
+    </header>
+    <main class="container">
+        <ul class="poll-list">
+            {% for question in latest_question_list %}
+                <li class="poll-item">
+                    <a href="{% url 'polls:detail' question.id %}" class="poll-link">
+                        {{ question.question_text }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
-
 </html>
